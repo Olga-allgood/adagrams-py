@@ -1,7 +1,8 @@
 from random import randint
 
-def draw_letters():
-    LETTER_POOL = {
+import random
+
+LETTER_POOL = {
     'A': 9, 
     'B': 2, 
     'C': 2, 
@@ -29,7 +30,7 @@ def draw_letters():
     'Y': 2, 
     'Z': 1
 }
-def draw_hand():
+def draw_letters():
 
   all_letter_occurencies = ""
 
@@ -37,14 +38,18 @@ def draw_hand():
 
   for letter, frequency in LETTER_POOL.items():
     all_letter_occurencies += letter *frequency
+
   all_letter_occurencies = list(all_letter_occurencies)  
 
   while len(hand_of_letters) < 10:
-    random_index = randint(0, len(all_letter_occurencies)-1)
+    random_index = random.randint(0, len(all_letter_occurencies)-1)
     random_letter = all_letter_occurencies[random_index]
     hand_of_letters.append(random_letter)
+    all_letter_occurencies.pop(random_index)
 
   return hand_of_letters   
+
+
 
 def uses_available_letters(word, letter_bank):
     pass
